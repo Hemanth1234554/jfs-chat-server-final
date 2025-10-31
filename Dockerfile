@@ -15,8 +15,9 @@ COPY src ./src
 RUN mvn package -DskipTests
 
 # --- STAGE 2: Create the Final, Small Image ---
-# We use a minimal Java 17 image to *run* the app (smaller = faster)
-FROM openjdk:17-jre-slim
+# --- THIS LINE IS FIXED ---
+# The correct image name is "openjdk:17-slim"
+FROM openjdk:17-slim
 
 # Set the working directory
 WORKDIR /app
