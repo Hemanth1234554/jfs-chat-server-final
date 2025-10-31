@@ -1,6 +1,5 @@
 # --- STAGE 1: Build the Java App ---
-# --- THIS LINE IS FIXED (AGAIN) ---
-# Using the official Eclipse Temurin image for Java 17 + Maven
+# We now use an image that has both Java 17 and Maven (mvn) pre-installed
 FROM maven:3-eclipse-temurin-17 AS builder
 
 # Set the working directory inside the container
@@ -30,13 +29,4 @@ EXPOSE 8080
 
 # The final command to start our server when the container runs
 CMD ["java", "-jar", "./app.jar"]
-
-### Your Next Action (Very Important):
-
-1.  **Save** the clean `Dockerfile` in Eclipse.
-2.  Go to **GitHub Desktop**.
-3.  You will see **1 changed file** (`Dockerfile`).
-4.  In the "Summary" box, type: `Fix Docker builder image`
-5.  Click **"Commit to main"**.
-6.  Click **"Push origin"**.
 
