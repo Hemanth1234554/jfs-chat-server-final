@@ -7,65 +7,62 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>JFS Chat Server</name>
 
-    <!-- This tells Maven we are using Java 21 -->
+    <!-- === THIS IS THE FIX === -->
+    <!-- We are now telling Maven to use Java 17 -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
-    <!-- This is our new "lib" folder -->
-    <!-- Maven will automatically download these JARs -->
+    <!-- These are all our libraries -->
     <dependencies>
-    
-        <!-- WebSocket Library -->
         <dependency>
             <groupId>org.java-websocket</groupId>
             <artifactId>Java-WebSocket</artifactId>
             <version>1.6.0</version>
         </dependency>
-        
-        <!-- PostgreSQL Database Driver -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.7.3</version>
         </dependency>
-        
-        <!-- JSON Library -->
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20240303</version>
         </dependency>
-        
-        <!-- BCrypt Password Hashing Library -->
         <dependency>
             <groupId>org.mindrot</groupId>
             <artifactId>jbcrypt</artifactId>
             <version>0.4</version>
         </dependency>
-        
-        <!-- Logging Library (API) -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>2.0.13</version>
         </dependency>
-        
-        <!-- Logging Library (Implementation) -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>2.0.13</version>
         </dependency>
-        
     </dependencies>
 
-    <!-- This section tells Maven how to build our project -->
+    <!-- This is our build instructions -->
     <build>
         <plugins>
-            <!-- This plugin builds a single "fat JAR" with all dependencies included -->
+            <!-- This plugin tells Maven what version to build with -->
+             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
+            </plugin>
+            <!-- This plugin builds the "fat JAR" -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -90,3 +87,4 @@
         </plugins>
     </build>
 </project>
+
