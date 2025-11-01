@@ -2,6 +2,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.chatapp</groupId>
@@ -10,14 +11,12 @@
     <name>JFS Chat Server</name>
     <description>Java WebSocket Chat Server Application</description>
 
-    <!-- ✅ Java 17 configuration -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
-    <!-- ✅ Dependencies -->
     <dependencies>
         <dependency>
             <groupId>org.java-websocket</groupId>
@@ -56,7 +55,6 @@
         </dependency>
     </dependencies>
 
-    <!-- ✅ Build section -->
     <build>
         <plugins>
 
@@ -71,7 +69,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Shade plugin to create a single runnable JAR -->
+            <!-- Shade plugin to create runnable JAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -84,7 +82,6 @@
                         </goals>
                         <configuration>
                             <transformers>
-                                <!-- 👇 Set your main class here -->
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>com.chatapp.WebSocketChatServer</mainClass>
                                 </transformer>
@@ -96,4 +93,5 @@
 
         </plugins>
     </build>
+
 </project>
